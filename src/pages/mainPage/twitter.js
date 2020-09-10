@@ -5,8 +5,8 @@ import UserTopBar from '../../components/userTopBar'
 const Twitter = () => {
   return(
     <React.Fragment>
-      {/* <Tweets/>
-      <UserTopBar/> */}
+      {/* <Tweets/> */}
+      {/* <UserTopBar/>  */}
     </React.Fragment>
   )
 }

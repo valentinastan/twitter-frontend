@@ -1,10 +1,14 @@
 import React from 'react'
-
+import { useState } from '../state-management/stores/store'
 
 const UserTopBar = () => {
+  const username = useState().user[0]
+
   return(
     <React.Fragment>
-      <div>lalaalalal</div>
+      <div className='user-topbar'>
+       {(username) ? <div>Username: {username}</div> : <div></div>}
+      </div>
     </React.Fragment>
   )
 }

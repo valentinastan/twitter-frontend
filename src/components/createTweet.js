@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch } from '../state-management/stores/store'
 import { postTweetRequest } from '../requests/tweets'
+import { clearUserText } from '../helpers/functionsOnText'
 
 const CreateTweet = (props) => {
   const [state, setState] = useState('')
-  const dispatch = useDispatch()
 
   const newTweet = () => {
     postTweetRequest({
@@ -12,16 +12,11 @@ const CreateTweet = (props) => {
     }).then((tweet) => props.addTweet(tweet))
   }
 
-  const clearTextarea = () => {
-    if(document.getElementById("newTweet").value)
-    document.getElementById("newTweet").value = ''
-  }
-
   return(
     <React.Fragment>
       <textarea id="newTweet" rows="4" cols="30" onChange={(event) => setState(event.target.value)}></textarea>
       <button type='button' onClick = {() => {
-        clearTextarea()
+        clearUserText()
         return newTweet()
       }}>Add tweet</button>
     </React.Fragment>

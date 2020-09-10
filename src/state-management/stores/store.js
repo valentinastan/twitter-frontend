@@ -1,20 +1,22 @@
 import React from 'react';
 import tweetReducer from '../reducers/tweetReducer'
+import userReducer from '../reducers/userReducer'
 
 const initialState = {
-  tweets: {}
+  tweets: {},
+  user: []
 }
 
 const Store = React.createContext();
 const Dispatch = React.createContext();
 
 // const combinedReducers = (state, action) => ({
-//   postState: postReducer(state.postState, action),
-//   commentState: commentReducer(state.commentState, action),
+//   tweetsState: tweetReducer(state.tweets, action),
+//   userState: userReducer(state.user, action),
 // })
 
 function StateProvider({ children }) {
-  const [state, dispatch] = React.useReducer(tweetReducer, initialState)
+  const [state, dispatch] = React.useReducer(userReducer, initialState)
 
   return (
     <Store.Provider value={state}>
