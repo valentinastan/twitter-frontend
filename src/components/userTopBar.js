@@ -7,7 +7,7 @@ const UserTopBar = () => {
   return(
     <React.Fragment>
       <div className='user-topbar'>
-       {(username) ? <div>Username: {username}</div> : <div></div>}
+       {(username) ? <div>Your username: {username}</div> : <div></div>}
       </div>
     </React.Fragment>
   )

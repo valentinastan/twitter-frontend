@@ -6,8 +6,8 @@ export async function postLoginRequest(params) {
   return user.data
 }
 
-// export async function postTweetRequest(params) {
-//   let newTweet = await post('api/tweet', params)
+export async function postSignUpRequest(params) {
+  let newUser = await post('api/signUp', params)
 
-//   return newTweet.data
-// }
+  return newUser.data
+}

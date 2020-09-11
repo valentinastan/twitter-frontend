@@ -4,7 +4,8 @@ import userReducer from '../reducers/userReducer'
 
 const initialState = {
   tweets: {},
-  user: []
+  user: [],
+  userToken: ''
 }
 
 const Store = React.createContext();

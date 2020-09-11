@@ -31,9 +31,9 @@ const Login = () => {
       <div className = 'login'>
         <form>
           <label for="email">Email:</label><br></br>
-          <input type="text" id="email" name="email" onChange = {(event) => setState({...state, email: event.target.value})}></input><br></br>
+          <input type="text" id="email" name="email" placeholder='Your email' onChange = {(event) => setState({...state, email: event.target.value})}></input><br></br>
           <label for="password">Password:</label><br></br>
-          <input type="text" id="password" name="password" onChange = {(event) => setState({...state, password: event.target.value})}></input><br></br>
+          <input type="text" id="password" name="password" placeholder='Your password' onChange = {(event) => setState({...state, password: event.target.value})}></input><br></br>
         </form>
         <button id='login' type='button' onClick = {() => {
           newLogin()
@@ -43,7 +43,6 @@ const Login = () => {
       
       <Link to={`/signup`}>Create New Account</Link>
 
-      <UserTopBar/> 
     </React.Fragment>
   )
 }
