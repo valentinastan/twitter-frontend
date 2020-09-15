@@ -4,7 +4,7 @@ import userReducer from '../reducers/userReducer'
 
 const initialState = {
   tweets: {},
-  user: [],
+  user: {},
   userToken: ''
 }
 
@@ -27,6 +27,7 @@ function StateProvider({ children }) {
     </Store.Provider>
   )
 }
+
 
 function useState() {
   const context = React.useContext(Store)

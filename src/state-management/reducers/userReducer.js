@@ -1,16 +1,16 @@
 export default function userReducer(state, action) {
 
   switch(action.type) {
-    case 'LOGIN':
-      console.log("action", action)
-      state.user.push(action.user.user.username)
-      state.userToken = action.user.token
+    case 'USER_AUTH':
+      state.user.username = action.user.dataValues.username
+      state.user.authToken = action.user.token
+      let user = {username: state.user.username, authToken: state.user.authToken}
+      localStorage.setItem('userLogged', JSON.stringify(user));
 
       return {...state}
-    case 'SIGN_UP':
-      console.log("username:", action.user.username)
-      state.user.push(action.user.username)
-      state.userToken = action.user.token
+    case 'SAVE_TOKEN':
+      console.log("action in save token", action)
+      state.user.authToken = action
 
       return {...state}
     default:

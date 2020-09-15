@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { postSignUpRequest } from '../../requests/userActions'
-import { useDispatch } from '../../state-management/stores/store'
-import { clearUserSignUp } from '../../helpers/functionsOnText'
+import { postSignUpRequest } from '../requests/userActions'
+import { useDispatch } from '../state-management/stores/store'
+import { clearUserSignUp } from '../helpers/functionsOnText'
 
 const Signup = () => {
 
@@ -19,7 +19,7 @@ const Signup = () => {
       email: state.email,
       password: state.password
     }).then((user) => dispatch({
-        type: 'SIGN_UP',
+        type: 'USER_AUTH',
         user
     }))
   }
@@ -34,7 +34,7 @@ const Signup = () => {
           <label for="email">Email:</label><br></br>
           <input type="text" id="email" name="email" placeholder="YourEmail@gmail.com" onChange={(event) => setState({...state, email: event.target.value})}></input><br></br>
           <label for="password">Password:</label><br></br>
-          <input type="text" id="password" name="password" placeholder='Your Password' onChange={(event) => setState({...state, password: event.target.value})}></input><br></br>
+          <input type="password" id="password" name="password" placeholder='Your Password' onChange={(event) => setState({...state, password: event.target.value})}></input><br></br>
         </form>
         <button id='signup' type='button' onClick={() => {
           newUser()

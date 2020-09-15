@@ -1,16 +1,15 @@
 import React from 'react';
-import Twitter from './pages/mainPage/twitter'
 import './App.css';
-import Login from './pages/loginPage/login';
 import { authRoutes } from './routes/routes'
 import UserTopBar from './components/userTopBar'
 
 function App() {
+//window.location.href
+  //conect cu store. daca ex token, => twitter page. daca nu, la pg de login
   return (
     <React.Fragment>
-      <Twitter/>
+      {/* <MainPage/> */}
       { authRoutes }
-      {/* <Login/> */}
       <UserTopBar/> 
     </React.Fragment>
   );

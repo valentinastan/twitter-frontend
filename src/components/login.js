@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch } from '../../state-management/stores/store'
-import { postLoginRequest } from '../../requests/userActions'
-import UserTopBar from '../../components/userTopBar'
-import { clearUserInfos } from '../../helpers/functionsOnText'
+import { useDispatch } from '../state-management/stores/store'
+import { postLoginRequest } from '../requests/userActions'
+import { clearUserInfos } from '../helpers/functionsOnText'
+import isAuthenticated from '../components/userTopBar'
+
 
 const Login = () => {
 
@@ -19,9 +20,10 @@ const Login = () => {
       email: state.email,
       password: state.password
     }).then((user) => dispatch({
-      type: 'LOGIN',
+      type: 'USER_AUTH',
       user
-    }))
+      })).then(() => isAuthenticated() ? 
+        (window.location.href = 'http://localhost:3000/') : false)
   }
 
   return(
@@ -33,7 +35,7 @@ const Login = () => {
           <label for="email">Email:</label><br></br>
           <input type="text" id="email" name="email" placeholder='Your email' onChange = {(event) => setState({...state, email: event.target.value})}></input><br></br>
           <label for="password">Password:</label><br></br>
-          <input type="text" id="password" name="password" placeholder='Your password' onChange = {(event) => setState({...state, password: event.target.value})}></input><br></br>
+          <input type="password" id="password" name="password" placeholder='Your password' onChange = {(event) => setState({...state, password: event.target.value})}></input><br></br>
         </form>
         <button id='login' type='button' onClick = {() => {
           newLogin()
