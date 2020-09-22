@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import Signup from '../components/signup';
 import Login from '../components/login';
 import MainPage from '../pages/mainPage';
-import { useDispatch, useState } from '../state-management/stores/store'
+import { useState } from '../state-management/stores/store'
 
 function PrivateRoute ({component: Component, ...rest}) {
   const store = useState()
@@ -18,7 +18,7 @@ function PrivateRoute ({component: Component, ...rest}) {
       {...rest}
       render={(props) => authed === true
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+        : <Redirect to={{pathname: '/login'}} />}
     />
   )
 }

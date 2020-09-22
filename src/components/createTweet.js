@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
-import { useDispatch } from '../state-management/stores/store'
+import { useStore } from '../state-management/stores/store'
 import { postTweetRequest } from '../requests/tweets'
 import { clearUserText } from '../helpers/functionsOnText'
 
 const CreateTweet = (props) => {
   const [state, setState] = useState('')
+  const [store] = useStore()
+  console.log('store userrrrrrrrrrrrr', store)
 
   const newTweet = () => {
     postTweetRequest({
       text: state,
+    }, {
+      'Authorization': store.user.authToken,
     }).then((tweet) => props.addTweet(tweet))
   }
 

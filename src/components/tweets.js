@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 import Tweet from './tweet'
 import CreateTweet from './createTweet'
 import { getTweetsRequest } from '../requests/tweets'
+import { useStore } from '../state-management/stores/store'
 
 
 const Tweets = () => {
 
   const [state, setState] = useState([]);
+  const [store] = useStore()
 
   React.useEffect(() => {
-    getTweetsRequest().then(tweets => setState(tweets))
+    getTweetsRequest(
+      {}, 
+      { 'Authorization': store.user.authToken }
+    ).then(tweets => setState(tweets))
   }, [])
 
   const addNewTweetToState = (newTweet) => {

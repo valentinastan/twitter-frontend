@@ -21,7 +21,7 @@ const Signup = () => {
     }).then((user) => dispatch({
         type: 'USER_AUTH',
         user
-    }))
+    })).then(() =>  window.location.href = 'http://localhost:3000/')
   }
 
   return(
