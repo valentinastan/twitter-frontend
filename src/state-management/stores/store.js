@@ -2,10 +2,13 @@ import React from 'react';
 import tweetReducer from '../reducers/tweetReducer'
 import userReducer from '../reducers/userReducer'
 
+const localStorageToken = JSON.parse(localStorage.getItem('userLogged')).authToken
 const initialState = {
   tweets: {},
-  user: {},
-  userToken: ''
+  user: 
+  {
+    authToken: localStorageToken ? localStorageToken : '' 
+  },
 }
 
 const Store = React.createContext();
@@ -27,7 +30,6 @@ function StateProvider({ children }) {
     </Store.Provider>
   )
 }
-
 
 function useState() {
   const context = React.useContext(Store)

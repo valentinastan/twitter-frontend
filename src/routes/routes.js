@@ -3,13 +3,16 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import Signup from '../components/signup';
 import Login from '../components/login';
 import MainPage from '../pages/mainPage';
-import { useState } from '../state-management/stores/store'
-
+import { useDispatch, useState } from '../state-management/stores/store'
 
 function PrivateRoute ({component: Component, ...rest}) {
   const store = useState()
+
+  let storeToken = store.user.authToken
+  const isAuthenticated =  (() => storeToken ? true : false)
+
   console.log('store din routes', store.user.authToken)
-  let authed = store.user.authToken
+  let authed = isAuthenticated()
   return (
     <Route
       {...rest}

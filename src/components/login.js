@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from '../state-management/stores/store'
 import { postLoginRequest } from '../requests/userActions'
 import { clearUserInfos } from '../helpers/functionsOnText'
-import isAuthenticated from '../components/userTopBar'
-
 
 const Login = () => {
 
@@ -22,8 +20,7 @@ const Login = () => {
     }).then((user) => dispatch({
       type: 'USER_AUTH',
       user
-      })).then(() => isAuthenticated() ? 
-        (window.location.href = 'http://localhost:3000/') : false)
+      })).then(() =>  window.location.href = 'http://localhost:3000/')
   }
 
   return(
